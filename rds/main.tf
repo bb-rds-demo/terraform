@@ -46,3 +46,24 @@ resource "aws_db_subnet_group" "rds_subnet_group" {
   vpc_security_group_ids = [aws_security_group.allow_frontend_to_db.id]
   db_subnet_group_name = aws_db_subnet_group.rds_subnet_group.name
 }
+
+resource "aws_ssm_parameter" "rds_secret" {
+  name        = "/rds/secret"
+  description = "rds-connection-secret"
+  type        = "SecureString"
+  value       = aws_db_instance.mysql-db.password
+}
+
+resource "aws_ssm_parameter" "rds_username" {
+  name        = "/rds/user"
+  description = "rds-connection-secret"
+  type        = "String"
+  value       = aws_db_instance.mysql-db.username
+}
+
+resource "aws_ssm_parameter" "rds_endpoint" {
+  name        = "/rds/endpoint"
+  description = "rds-connection-secret"
+  type        = "String"
+  value       = aws_db_instance.mysql-db.address
+}

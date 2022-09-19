@@ -36,6 +36,7 @@ resource "aws_launch_template" "frontend_asg" {
   instance_initiated_shutdown_behavior = "terminate"
   instance_type = "t2.micro"
   vpc_security_group_ids = [aws_security_group.allow_http_to_frontend.id]
+	user_data = filebase64("${path.module}/userdata.sh")
 }
 
 resource "aws_autoscaling_group" "rds_frontend_autoscaling_group" {
