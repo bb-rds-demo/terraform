@@ -30,9 +30,9 @@ module "ec2" {
 }
 
 module "rds" {
-  source              = "./rds"
+  source                  = "./rds"
   inbound_security_groups = [module.ec2.frontend_security_group]
-  vpc_id = module.networking.vpc_id
-  subnet_ids = [module.networking.private_subnet_01, module.networking.private_subnet_02]
+  vpc_id                  = module.networking.vpc_id
+  subnet_ids              = [module.networking.private_subnet_01, module.networking.private_subnet_02]
 }
 

@@ -1,9 +1,9 @@
-variable vpc_name {}
-variable vpc_cidr {}
-variable public_cidr_01 {}
-variable public_cidr_02 {}
-variable private_cidr_01 {}
-variable private_cidr_02 {}
+variable "vpc_name" {}
+variable "vpc_cidr" {}
+variable "public_cidr_01" {}
+variable "public_cidr_02" {}
+variable "private_cidr_01" {}
+variable "private_cidr_02" {}
 
 resource "aws_vpc" "rds_demo_vpc" {
   cidr_block       = var.vpc_cidr
@@ -15,8 +15,8 @@ resource "aws_vpc" "rds_demo_vpc" {
 }
 
 resource "aws_subnet" "public_subnet_01" {
-  vpc_id     = aws_vpc.rds_demo_vpc.id
-  cidr_block = var.public_cidr_01
+  vpc_id            = aws_vpc.rds_demo_vpc.id
+  cidr_block        = var.public_cidr_01
   availability_zone = "eu-west-2a"
 
   tags = {
@@ -25,8 +25,8 @@ resource "aws_subnet" "public_subnet_01" {
 }
 
 resource "aws_subnet" "public_subnet_02" {
-  vpc_id     = aws_vpc.rds_demo_vpc.id
-  cidr_block = var.public_cidr_02
+  vpc_id            = aws_vpc.rds_demo_vpc.id
+  cidr_block        = var.public_cidr_02
   availability_zone = "eu-west-2b"
 
   tags = {
@@ -35,8 +35,8 @@ resource "aws_subnet" "public_subnet_02" {
 }
 
 resource "aws_subnet" "private_subnet_01" {
-  vpc_id     = aws_vpc.rds_demo_vpc.id
-  cidr_block = var.private_cidr_01
+  vpc_id            = aws_vpc.rds_demo_vpc.id
+  cidr_block        = var.private_cidr_01
   availability_zone = "eu-west-2a"
 
   tags = {
@@ -45,8 +45,8 @@ resource "aws_subnet" "private_subnet_01" {
 }
 
 resource "aws_subnet" "private_subnet_02" {
-  vpc_id     = aws_vpc.rds_demo_vpc.id
-  cidr_block = var.private_cidr_02
+  vpc_id            = aws_vpc.rds_demo_vpc.id
+  cidr_block        = var.private_cidr_02
   availability_zone = "eu-west-2b"
 
   tags = {
