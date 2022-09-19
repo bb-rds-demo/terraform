@@ -12,14 +12,14 @@
 - For a future deployment to obtain the DNS name of the ALB, this can be retrieved through a Terraform data object, an AWS CLI request, manually through the console, or by an output within the the module.
 
 ### CI/CD ###
-- To depoy to continuously a Terraform backend needs to be configured with the relevant state locks and data storage reliablility
+- To depoy continuously a Terraform backend needs to be configured with the relevant state locks and data storage reliablility
 - Authentication will need to be configured, either using IAM credentials, AWS session credentials or any other means
 - Once authentication is configured, the deployment can be duplicated for staging/production environments
-- To ensure safe deployment into production, a CICD configuration could include a plan stage followed by a gated apply production stage.
+- To ensure safe deployment into production, a CICD configuration could include a plan stage followed by a gated apply production stage
 
 ### Connection to the RDS instance ###
 - Depending on the desired connection method, this could be achieved through either IAM or username/password
-- For IAM connection, the configuration is well documente here
+- For IAM connection, the configuration is well documented here
   - https://aws.amazon.com/premiumsupport/knowledge-center/users-connect-rds-iam/
-- For username/password authentication, the username/password created within the RDS module is pushed to parameter store, and retrieved by the EC2 userdata.
+- For username/password authentication, the username/password created within the RDS module is pushed to parameter store, and retrieved by the EC2 userdata as an example of how to pull these credentials to the EC2 instance.
 
